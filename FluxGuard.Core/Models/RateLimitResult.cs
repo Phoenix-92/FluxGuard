@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace FluxGuard.Core.Models;
 
-namespace FluxGuard.Core.Models
+public class RateLimitResult
 {
-    internal class RateLimitResult
-    {
-    }
+    public bool IsAllowed { get; init; }
+
+    public double RemainingTokens { get; init; }
+
+    public double RetryAfterSeconds { get; init; }
+
+    public string AppliedPolicy { get; init; } = string.Empty;
 }

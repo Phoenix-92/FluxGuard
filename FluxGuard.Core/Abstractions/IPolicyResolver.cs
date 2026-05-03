@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace FluxGuard.Core.Abstractions;
 
-namespace FluxGuard.Core.Abstractions
+using FluxGuard.Core.Models;
+using Microsoft.AspNetCore.Http;
+
+public interface IPolicyResolver
 {
-    internal interface IPolicyResolver
-    {
-    }
+    RateLimitPolicy Resolve(HttpContext context);
 }

@@ -1,15 +1,20 @@
+using FluxGuard.Api.Middleware;
+using FluxGuard.Core.Abstractions;
+using FluxGuard.Core.Algorithms;
+using FluxGuard.Core.Policies;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.AddSingleton<IRateLimiter, TokenBucketRateLimiter>();
+builder.Services.AddSingleton<IPolicyResolver, DefaultPolicyResolver>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -20,6 +25,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseMiddleware<RateLimitMiddleware>();
 app.MapControllers();
 
 app.Run();

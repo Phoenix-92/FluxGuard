@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace FluxGuard.Core.Models;
 
-namespace FluxGuard.Core.Models
+public class RateLimitPolicy
 {
-    internal class RateLimitPolicy
-    {
-    }
+    public int BucketCapacity { get; init; }
+
+    public int RefillRatePerSecond { get; init; }
+
+    public string PolicyName { get; init; } = "default";
 }

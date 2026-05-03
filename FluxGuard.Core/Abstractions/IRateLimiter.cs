@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace FluxGuard.Core.Abstractions;
+using FluxGuard.Core.Models;
 
-namespace FluxGuard.Core.Abstractions
+public interface IRateLimiter
 {
-    internal interface IRateLimiter
-    {
-    }
+    Task<RateLimitResult> IsAllowedAsync(string clientKey, RateLimitPolicy policy);
 }
