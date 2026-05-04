@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.7" />
+    <PackageReference Include="StackExchange.Redis" Version="2.12.14" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FluxGuard.Core\FluxGuard.Core.csproj" />
   </ItemGroup>
 
